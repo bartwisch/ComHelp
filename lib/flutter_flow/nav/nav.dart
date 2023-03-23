@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
-
+import '../../backend/supabase/supabase.dart';
 import '../../auth/firebase_user_provider.dart';
 
 import '../../index.dart';
@@ -78,14 +78,39 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? LoggedinWidget() : HomepageWidget(),
         ),
         FFRoute(
-          name: 'Homepage',
+          name: 'loggedin',
+          path: '/loggedin',
+          builder: (context, params) => LoggedinWidget(),
+        ),
+        FFRoute(
+          name: 'homepage',
           path: '/homepage',
           builder: (context, params) => HomepageWidget(),
         ),
         FFRoute(
-          name: 'loggedin',
-          path: '/loggedin',
-          builder: (context, params) => LoggedinWidget(),
+          name: 'pa_feedback',
+          path: '/paFeedback',
+          builder: (context, params) => PaFeedbackWidget(),
+        ),
+        FFRoute(
+          name: 'pa_admin_overview',
+          path: '/paAdminOverview',
+          builder: (context, params) => PaAdminOverviewWidget(),
+        ),
+        FFRoute(
+          name: 'pa_admin_configuration',
+          path: '/paAdminConfiguration',
+          builder: (context, params) => PaAdminConfigurationWidget(),
+        ),
+        FFRoute(
+          name: 'pa_admin_details',
+          path: '/paAdminDetails',
+          builder: (context, params) => PaAdminDetailsWidget(),
+        ),
+        FFRoute(
+          name: 'pa_filloutform',
+          path: '/paFilloutform',
+          builder: (context, params) => PaFilloutformWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       urlPathStrategy: UrlPathStrategy.path,
